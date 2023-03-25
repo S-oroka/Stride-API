@@ -30,6 +30,9 @@ const Login = async (req, res) => {
         throw error
     }
 }
+
+
+
 const Register = async (req, res) => {
     try {
         const {email, username} = req.body
