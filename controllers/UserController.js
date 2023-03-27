@@ -13,15 +13,6 @@ const finUserById = async (req, res, next, id) => {
     }
 }
 
-const createUser = async (req, res) => {
-    try {
-        const { username, email, password } = req.body
-        const user = await User.create({ username, email, password })
-        res.status(201).json(user)
-    } catch (err) {
-        res.status(400).json({ message: err.message })
-    }
-}
 
 const getUsers = async (req, res) => {
     try {
@@ -34,6 +25,5 @@ const getUsers = async (req, res) => {
 
 module.exports = {
     finUserById,
-    createUser,
     getUsers
 }
