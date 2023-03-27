@@ -3,9 +3,9 @@ const { Run, Location } = require('../models')
 
 const createRun = async (req, res) => {
     try {
-        const userId = req.params.id
+        const user_id = req.params.id
         let postBody = {
-            userId,
+            user_id,
             ...req.body
         }
         const run = await Run.create(postBody)
@@ -14,6 +14,8 @@ const createRun = async (req, res) => {
         res.status(500).json({ message: err.message })
     }
 }
+
+
 
 const deleteRun = async (req, res) => {
     try {
@@ -38,8 +40,22 @@ const getRuns = async (req, res) => {
     }
 }
 
+const findRunsByUser = async (req, res) => {
+    try {
+        const runs = await Run.findAll({
+            where: {
+                user_id: req.params.id
+            }
+        })
+        res.status(200).json(runs)
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+}
+
 module.exports = {
     createRun,
     deleteRun,
-    getRuns
+    getRuns,
+    findRunsByUser
 }

@@ -4,6 +4,7 @@ const runController = require('../controllers/RunController')
 Router.get('/', runController.getRuns)
 Router.post('/:id', runController.createRun)
 Router.delete('/:id', runController.deleteRun)
+Router.get('/:id', runController.findRunsByUser)
 
 
 module.exports = Router
