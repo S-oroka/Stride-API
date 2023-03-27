@@ -1,17 +1,18 @@
 const { User, Location, Run } = require('../models')
 
-const finUserById = async (req, res, next, id) => {
+const findUserById = async (req, res, next) => {
+    const { id } = req.params;
     try {
-        const user = await User.findByPk(id)
+        const user = await User.findByPk(id);
         if (!user) {
-            return res.status(404).json({ message: 'User not found' })
+            return res.status(404).json({ message: 'User not found' });
         }
-        req.user = user
-        next()
+        res.json(user);
     } catch (err) {
-        res.status(500).json({ message: err.message })
+        res.status(500).json({ message: err.message });
     }
-}
+};
+
 
 
 const getUsers = async (req, res) => {
@@ -24,6 +25,6 @@ const getUsers = async (req, res) => {
 }
 
 module.exports = {
-    finUserById,
-    getUsers
+    getUsers,
+    findUserById
 }
