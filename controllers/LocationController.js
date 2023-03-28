@@ -2,7 +2,7 @@ const {Run, Location} = require('../models')
 
 const createLocationByRun = async (req, res) => {
     try {
-        const run_id = req.params.id
+        const run_id = req.params.run_id
         let postBody = {
             run_id,
             ...req.body
