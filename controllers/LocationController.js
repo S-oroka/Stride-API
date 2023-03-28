@@ -14,6 +14,21 @@ const createLocationByRun = async (req, res) => {
     }
 }
 
+const deleteLocationByRun = async (req, res) => {
+    try {
+        const location_id = req.params.location_id
+        await Location.destroy({
+            where: {
+                id: location_id
+            }
+        })
+        res.send({ message: `Location ${location_id} deleted` })
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+}
+
 module.exports = {
-    createLocationByRun
+    createLocationByRun,
+    deleteLocationByRun
 }
