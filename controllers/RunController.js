@@ -53,9 +53,19 @@ const findRunsByUser = async (req, res) => {
     }
 }
 
+const getRunById = async (req, res) => {
+    try {
+        const run = await Run.findByPk(req.params.id)
+        res.status(200).json(run)
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+}
+
 module.exports = {
     createRun,
     deleteRun,
     getRuns,
-    findRunsByUser
+    findRunsByUser,
+    getRunById
 }
