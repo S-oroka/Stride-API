@@ -5,7 +5,8 @@ Router.get('/', runController.getRuns)
 Router.post('/:id', runController.createRun)
 Router.delete('/:id', runController.deleteRun)
 Router.get('/:id', runController.findRunsByUser)
-Router.get('/:id', runController.getRunById)
+Router.get('/run/:id', runController.getRunById)
+Router.put('/:id', runController.editRun)
 
 
 module.exports = Router
